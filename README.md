@@ -17,4 +17,4 @@ Projedeki tüm animasyonlar:
 
 🌙 Gece temalı gradient arka plan
 
-tamamen saf CSS animasyonlarıyla oluşturulmuştur — JavaScript kullanılmamıştır.
+tamamen saf CSS animasyonlarıyla oluşturulmuştur — Sevgilinize/Arkadaşınıza ufak bir jest yaparsınız artık :D
