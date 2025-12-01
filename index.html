@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kasımpatı</title>
+    <style>
+    
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            overflow: hidden;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        
+        .flower-container {
+            width: 100vw;
+            height: 100vh;
+            background: linear-gradient(to bottom, #0a0e27 0%, #1a1a2e 50%, #16213e 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        
+        .stars, .stars2, .stars3 {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: transparent;
+        }
+
+        .stars {
+            box-shadow: 780px 1204px #fff, 1345px 1759px #fff, 1468px 1023px #fff,
+                458px 975px #fff, 1367px 1722px #fff, 1749px 1477px #fff, 1843px 1999px #fff,
+                818px 314px #fff, 1901px 1902px #fff, 540px 1348px #fff, 1493px 1720px #fff,
+                280px 284px #fff, 1706px 1115px #fff, 1333px 1745px #fff, 1536px 694px #fff,
+                1234px 123px #fff, 234px 1456px #fff, 1789px 888px #fff, 456px 1567px #fff,
+                1890px 234px #fff, 567px 1890px #fff, 1678px 456px #fff, 890px 1234px #fff,
+                123px 1789px #fff, 1456px 567px #fff, 789px 1678px #fff, 1567px 890px #fff,
+                345px 123px #fff, 1234px 1456px #fff, 678px 1789px #fff;
+            width: 1px;
+            height: 1px;
+            animation: starsFloat 50s linear infinite;
+        }
+
+        .stars2 {
+            box-shadow: 1456px 789px #fff, 234px 1567px #fff, 1789px 345px #fff,
+                567px 1234px #fff, 890px 1678px #fff, 1234px 456px #fff, 678px 1890px #fff,
+                1567px 123px #fff, 345px 1789px #fff, 1890px 678px #fff, 123px 1456px #fff,
+                1678px 234px #fff, 456px 1234px #fff, 789px 567px #fff, 1345px 1890px #fff,
+                567px 890px #fff, 1789px 1234px #fff, 234px 678px #fff, 1456px 345px #fff,
+                890px 1567px #fff, 123px 789px #fff, 1234px 1678px #fff, 678px 456px #fff,
+                1890px 1456px #fff, 345px 234px #fff, 1567px 1789px #fff, 456px 123px #fff,
+                789px 1345px #fff, 1678px 567px #fff, 234px 890px #fff;
+            width: 2px;
+            height: 2px;
+            animation: starsFloat 100s linear infinite;
+        }
+
+        .stars3 {
+            box-shadow: 789px 1456px #fff, 1234px 234px #fff, 456px 1789px #fff,
+                1567px 678px #fff, 234px 1234px #fff, 1890px 567px #fff, 678px 1345px #fff,
+                123px 890px #fff, 1789px 1678px #fff, 345px 456px #fff, 1456px 1890px #fff,
+                567px 123px #fff, 890px 1567px #fff, 1678px 789px #fff, 234px 345px #fff,
+                1234px 1456px #fff, 789px 678px #fff, 1345px 234px #fff, 456px 1789px #fff,
+                1567px 890px #fff, 123px 1234px #fff, 1890px 456px #fff, 678px 1678px #fff,
+                345px 567px #fff, 1789px 123px #fff, 234px 1890px #fff, 1456px 678px #fff,
+                567px 345px #fff, 890px 1789px #fff, 1678px 234px #fff;
+            width: 3px;
+            height: 3px;
+            animation: starsFloat 150s linear infinite;
+        }
+
+        @keyframes starsFloat {
+            from { transform: translateY(0px); }
+            to { transform: translateY(-2000px); }
+        }
+
+        /* Kalp parçacıkları */
+        .hearts {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 5;
+        }
+
+        .heart {
+            position: absolute;
+            font-size: 30px;
+            opacity: 0;
+            animation: heartFloat 15s ease-in-out infinite;
+        }
+
+        .heart-1 { left: 10%; animation-delay: 0s; }
+        .heart-2 { left: 30%; animation-delay: 3s; }
+        .heart-3 { left: 50%; animation-delay: 6s; }
+        .heart-4 { left: 70%; animation-delay: 9s; }
+        .heart-5 { left: 90%; animation-delay: 12s; }
+
+        @keyframes heartFloat {
+            0% { bottom: -10%; opacity: 0; transform: translateX(0) rotate(0deg) scale(0.5); }
+            20% { opacity: 0.8; }
+            80% { opacity: 0.8; }
+            100% { bottom: 110%; opacity: 0; transform: translateX(100px) rotate(360deg) scale(1); }
+        }
+
+        /* Çiçek ana wrapper */
+        .flower-wrapper {
+            position: relative;
+            z-index: 10;
+            margin-bottom: 80px;
+        }
+
+        /* Çiçek ana container */
+        .flower {
+            position: relative;
+            width: 400px;
+            height: 500px;
+            animation: gentleSway 6s ease-in-out infinite;
+            animation-delay: 4s;
+        }
+
+        @keyframes gentleSway {
+            0%, 100% { transform: rotate(0deg); }
+            25% { transform: rotate(2deg); }
+            75% { transform: rotate(-2deg); }
+        }
+
+        /* Çiçek başları */
+        .flower-bloom {
+            position: absolute;
+            width: 120px;
+            height: 120px;
+            opacity: 0;
+            transform: scale(0);
+            animation: bloomGrow 1s ease-out forwards;
+        }
+
+        .bloom-1 { top: 50px; left: 140px; animation-delay: 2.5s; }
+        .bloom-2 { top: 80px; left: 60px; animation-delay: 2.7s; }
+        .bloom-3 { top: 90px; left: 220px; animation-delay: 2.9s; }
+
+        @keyframes bloomGrow {
+            0% { opacity: 0; transform: scale(0) rotate(-180deg); }
+            60% { transform: scale(1.1) rotate(10deg); }
+            100% { opacity: 1; transform: scale(1) rotate(0deg); animation: bloomFloat 4s ease-in-out infinite; }
+        }
+
+        @keyframes bloomFloat {
+            0%, 100% { transform: translateY(0px) scale(1); }
+            50% { transform: translateY(-10px) scale(1.02); }
+        }
+
+        /* Çiçek yaprakları (petals) */
+        .flower-petal {
+            position: absolute;
+            width: 50px;
+            height: 60px;
+            background: linear-gradient(135deg, #a5f3fc 0%, #67e8f9 30%, #22d3ee 70%, #06b6d4 100%);
+            border-radius: 50% 50% 50% 50%;
+            box-shadow: 0 0 25px rgba(103, 232, 249, 0.7), inset 0 0 20px rgba(255, 255, 255, 0.4);
+            opacity: 0;
+            animation: petalUnfold 0.8s ease-out forwards, petalGlow 3s ease-in-out infinite;
+        }
+
+        /* Animasyon Gecikmeleri */
+        .bloom-1 .petal-1 { animation-delay: 2.6s, 3.4s; }
+        .bloom-1 .petal-2 { animation-delay: 2.7s, 3.5s; }
+        .bloom-1 .petal-3 { animation-delay: 2.8s, 3.6s; }
+        .bloom-2 .petal-1 { animation-delay: 2.8s, 3.6s; }
+        .bloom-2 .petal-2 { animation-delay: 2.9s, 3.7s; }
+        .bloom-2 .petal-3 { animation-delay: 3s, 3.8s; }
+        .bloom-3 .petal-1 { animation-delay: 3s, 3.8s; }
+        .bloom-3 .petal-2 { animation-delay: 3.1s, 3.9s; }
+        .bloom-3 .petal-3 { animation-delay: 3.2s, 4s; }
+
+        .petal-1 { top: 0; left: 35px; border-radius: 50% 50% 0% 0%; }
+        .petal-2 { top: 35px; left: 10px; border-radius: 50% 0% 50% 0%; transform: rotate(-30deg); }
+        .petal-3 { top: 35px; right: 10px; border-radius: 0% 50% 0% 50%; transform: rotate(30deg); }
+
+        @keyframes petalUnfold {
+            0% { opacity: 0; transform: scale(0) rotate(-90deg); }
+            50% { opacity: 0.5; }
+            100% { opacity: 1; transform: scale(1) rotate(0deg); }
+        }
+
+        @keyframes petalGlow {
+            0%, 100% { box-shadow: 0 0 25px rgba(103, 232, 249, 0.7), inset 0 0 20px rgba(255, 255, 255, 0.4); }
+            50% { box-shadow: 0 0 40px rgba(103, 232, 249, 1), inset 0 0 25px rgba(255, 255, 255, 0.6); }
+        }
+
+        /* Çiçek merkezi */
+        .flower-center {
+            position: absolute;
+            top: 45px;
+            left: 45px;
+            width: 30px;
+            height: 30px;
+            background: radial-gradient(circle, #fef9c3 0%, #fef08a 30%, #fde047 100%);
+            border-radius: 50%;
+            box-shadow: 0 0 20px rgba(254, 240, 138, 0.9);
+            opacity: 0;
+            animation: centerAppear 0.5s ease-out forwards, centerPulse 2s ease-in-out infinite;
+        }
+
+        .bloom-1 .flower-center { animation-delay: 3s, 3.5s; }
+        .bloom-2 .flower-center { animation-delay: 3.2s, 3.7s; }
+        .bloom-3 .flower-center { animation-delay: 3.4s, 3.9s; }
+
+        @keyframes centerAppear {
+            0% { opacity: 0; transform: scale(0); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+
+        @keyframes centerPulse {
+            0%, 100% { transform: scale(1); box-shadow: 0 0 20px rgba(254, 240, 138, 0.9); }
+            50% { transform: scale(1.15); box-shadow: 0 0 30px rgba(254, 240, 138, 1); }
+        }
+
+        /* Gövdeler */
+        .flower-stem {
+            position: absolute;
+            width: 4px;
+            background: linear-gradient(to bottom, #0891b2 0%, #0e7490 100%);
+            border-radius: 2px;
+            box-shadow: 0 0 10px rgba(8, 145, 178, 0.5);
+            height: 0;
+            animation: stemGrow 1s ease-out forwards;
+        }
+
+        .flower-stem { left: 197px; top: 450px; animation-delay: 0.5s; }
+        .stem-2 { left: 117px; top: 450px; animation-delay: 0.7s; }
+        .stem-3 { left: 277px; top: 450px; animation-delay: 0.9s; }
+
+        @keyframes stemGrow {
+            0% { height: 0; top: 450px; }
+            100% { height: 280px; top: 170px; }
+        }
+
+        /* Yapraklar */
+        .flower-leaf {
+            position: absolute;
+            width: 60px;
+            height: 25px;
+            background: linear-gradient(135deg, #22d3ee 0%, #0891b2 100%);
+            border-radius: 0% 100% 0% 100%;
+            box-shadow: 0 0 15px rgba(34, 211, 238, 0.5);
+            opacity: 0;
+            transform: scale(0);
+            animation: leafGrow 0.6s ease-out forwards, leafSway 5s ease-in-out infinite;
+        }
+
+        .leaf-1 { top: 250px; left: 150px; transform-origin: right center; animation-delay: 1.5s, 2.1s; }
+        .leaf-2 { top: 300px; left: 180px; transform-origin: left center; animation-delay: 1.7s, 2.3s; }
+        .leaf-3 { top: 270px; left: 90px; transform-origin: right center; animation-delay: 1.9s, 2.5s; }
+        .leaf-4 { top: 320px; left: 110px; transform-origin: left center; animation-delay: 2.1s, 2.7s; }
+        .leaf-5 { top: 280px; left: 240px; transform-origin: left center; animation-delay: 2.3s, 2.9s; }
+        .leaf-6 { top: 330px; left: 260px; transform-origin: right center; animation-delay: 2.5s, 3.1s; }
+
+        @keyframes leafGrow {
+            0% { opacity: 0; transform: scale(0) rotate(-90deg); }
+            100% { opacity: 1; transform: scale(1) rotate(0deg); }
+        }
+
+        @keyframes leafSway {
+            0%, 100% { transform: translateX(0) rotate(0deg); }
+            25% { transform: translateX(5px) rotate(5deg); }
+            75% { transform: translateX(-5px) rotate(-5deg); }
+        }
+
+        /* Işık efektleri */
+        .flower-light {
+            position: absolute;
+            width: 120px;
+            height: 120px;
+            background: radial-gradient(circle, rgba(103, 232, 249, 0.4) 0%, transparent 70%);
+            border-radius: 50%;
+            opacity: 0;
+            animation: lightAppear 1s ease-out forwards, lightPulse 4s ease-in-out infinite;
+        }
+
+        .light-1 { top: 40px; left: 130px; animation-delay: 3.5s, 4.5s; }
+        .light-2 { top: 70px; left: 50px; animation-delay: 3.7s, 4.7s; }
+        .light-3 { top: 80px; left: 210px; animation-delay: 3.9s, 4.9s; }
+
+        @keyframes lightAppear {
+            0% { opacity: 0; transform: scale(0); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+
+        @keyframes lightPulse {
+            0%, 100% { opacity: 0.4; transform: scale(1); }
+            50% { opacity: 0.7; transform: scale(1.3); }
+        }
+
+        /* Mesaj container */
+        .message-container {
+            position: relative;
+            z-index: 20;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            opacity: 0;
+            animation: messageAppear 1.5s ease-out forwards;
+            animation-delay: 4s;
+        }
+
+        @keyframes messageAppear {
+            0% { opacity: 0; transform: translateY(30px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Mesaj gösterimi */
+        .message-display {
+            font-size: 28px;
+            font-weight: 600;
+            color: #a5f3fc;
+            text-align: center;
+            text-shadow: 0 0 25px rgba(165, 243, 252, 0.8), 0 0 35px rgba(103, 232, 249, 0.5);
+            padding: 15px 40px;
+            background: linear-gradient(135deg, rgba(34, 211, 238, 0.1) 0%, rgba(6, 182, 212, 0.15) 100%);
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(103, 232, 249, 0.3);
+            animation: messageGlow 3s ease-in-out infinite;
+            letter-spacing: 1px;
+        }
+
+        @keyframes messageGlow {
+            0%, 100% { text-shadow: 0 0 25px rgba(165, 243, 252, 0.8), 0 0 35px rgba(103, 232, 249, 0.5); border-color: rgba(103, 232, 249, 0.3); }
+            50% { text-shadow: 0 0 35px rgba(165, 243, 252, 1), 0 0 50px rgba(103, 232, 249, 0.8), 0 0 60px rgba(34, 211, 238, 0.6); border-color: rgba(103, 232, 249, 0.6); }
+        }
+
+        /* Mobil Uyumluluk */
+        @media (max-width: 768px) {
+            .flower { width: 300px; height: 400px; }
+            .flower-bloom { width: 90px; height: 90px; }
+            .bloom-1 { left: 105px; }
+            .bloom-2 { left: 45px; }
+            .bloom-3 { left: 165px; }
+            .message-display { font-size: 20px; padding: 12px 30px; }
+            .heart { font-size: 24px; }
+        }
+
+        @media (max-width: 480px) {
+            .flower { width: 250px; height: 350px; }
+            .message-display { font-size: 18px; padding: 10px 25px; }
+            .heart { font-size: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="flower-container">
+        <!-- Yıldızlı arka plan -->
+        <div class="stars"></div>
+        <div class="stars2"></div>
+        <div class="stars3"></div>
+
+        <!-- Kalp parçacıkları -->
+        <div class="hearts">
+            <div class="heart heart-1">💕</div>
+            <div class="heart heart-2">💖</div>
+            <div class="heart heart-3">💝</div>
+            <div class="heart heart-4">💗</div>
+            <div class="heart heart-5">💓</div>
+        </div>
+
+        <!-- Ana çiçek -->
+        <div class="flower-wrapper">
+            <div class="flower">
+                <!-- Çiçek 1 - Orta -->
+                <div class="flower-bloom bloom-1">
+                    <div class="flower-petal petal-1"></div>
+                    <div class="flower-petal petal-2"></div>
+                    <div class="flower-petal petal-3"></div>
+                    <div class="flower-center"></div>
+                </div>
+
+                <!-- Çiçek 2 - Sol -->
+                <div class="flower-bloom bloom-2">
+                    <div class="flower-petal petal-1"></div>
+                    <div class="flower-petal petal-2"></div>
+                    <div class="flower-petal petal-3"></div>
+                    <div class="flower-center"></div>
+                </div>
+
+                <!-- Çiçek 3 - Sağ -->
+                <div class="flower-bloom bloom-3">
+                    <div class="flower-petal petal-1"></div>
+                    <div class="flower-petal petal-2"></div>
+                    <div class="flower-petal petal-3"></div>
+                    <div class="flower-center"></div>
+                </div>
+
+                <!-- Gövde -->
+                <div class="flower-stem"></div>
+                <div class="flower-stem stem-2"></div>
+                <div class="flower-stem stem-3"></div>
+
+                
+                <div class="flower-leaf leaf-1"></div>
+                <div class="flower-leaf leaf-2"></div>
+                <div class="flower-leaf leaf-3"></div>
+                <div class="flower-leaf leaf-4"></div>
+                <div class="flower-leaf leaf-5"></div>
+                <div class="flower-leaf leaf-6"></div>
+
+                
+                <div class="flower-light light-1"></div>
+                <div class="flower-light light-2"></div>
+                <div class="flower-light light-3"></div>
+            </div>
+        </div>
+
+        
+        <div class="message-container">
+            <div class="message-display">
+                Coded By Mustafa Eren Gökdemir
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
